@@ -7,7 +7,7 @@ using Microsoft.AspNetCore.Http;
 
 namespace NotesCRUD.Data.DbContexts
 {
-    public partial class NotesCRUDDbContext : DbContext
+    public partial class NotesCRUDDbContext : IdentityDbContext<AppUser>
     {
         private readonly IHttpContextAccessor _httpContextAccessor;
 

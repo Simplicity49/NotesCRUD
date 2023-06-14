@@ -53,26 +53,11 @@ public class AuthController : ControllerBase
 
     private string GenerateJwtToken(string userId)
     {
-        //var tokenHandler = new JwtSecurityTokenHandler();
-        //var key = Encoding.ASCII.GetBytes(_configuration["JwtSettings:SecretKey"]);
-        //var tokenDescriptor = new SecurityTokenDescriptor
-        //{
-        //    Subject = new ClaimsIdentity(new[]
-        //    {
-        //            new Claim(ClaimTypes.NameIdentifier, userId)
-        //    }),
-        //    Expires = DateTime.UtcNow.AddDays(Convert.ToDouble(_configuration["JwtSettings:ExpirationDays"])),
-        //    SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(key), SecurityAlgorithms.HmacSha256Signature)
-        //};
-
-        //var token = tokenHandler.CreateToken(tokenDescriptor);
-        //return tokenHandler.WriteToken(token);
-
 
         var issuer = _configuration["Jwt:Issuer"];
         var audience = _configuration["Jwt:Audience"];
-        var key = Encoding.ASCII.GetBytes
-        (_configuration["Jwt:SecretKey"]);
+        var key = Encoding.ASCII.GetBytes (_configuration["Jwt:SecretKey"]);
+
         var tokenDescriptor = new SecurityTokenDescriptor
         {
             Subject = new ClaimsIdentity(new[]
@@ -93,7 +78,8 @@ public class AuthController : ControllerBase
         var token = tokenHandler.CreateToken(tokenDescriptor);
         var jwtToken = tokenHandler.WriteToken(token);
         var stringToken = tokenHandler.WriteToken(token);
-        return tokenHandler.WriteToken(token);
+        return jwtToken;
+        //return tokenHandler.WriteToken(token);
     }
 }
 

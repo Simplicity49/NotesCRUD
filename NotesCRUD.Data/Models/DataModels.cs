@@ -4,7 +4,8 @@ using Microsoft.AspNetCore.Identity;
 
 namespace NotesCRUD.Data.Models
 {
-	public class BaseEntity
+	public class AppUser : IdentityUser { }
+        public class BaseEntity
 	{
 		public DateTime DateCreated { get; set; }
 		public DateTime DateUpdated { get; set; }

@@ -28,7 +28,6 @@ public class NotesController : ControllerBase
 
 
     [HttpGet]
-    [AllowAnonymous]
     public Task<ActionResult<IEnumerable<Note>>> GetNotes()
     {
         var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
@@ -38,7 +37,6 @@ public class NotesController : ControllerBase
 
 
     [HttpGet("{id}")]
-    [Authorize]
     public Task<ActionResult<Note>> GetNoteById(int id)
     {
         var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
@@ -47,7 +45,6 @@ public class NotesController : ControllerBase
     }
 
     [HttpPost]
-    [Authorize]
     public Task<ActionResult<Note>> Create(Note note)
     {
         var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
@@ -56,7 +53,6 @@ public class NotesController : ControllerBase
     }
 
     [HttpPut]
-    [Authorize]
     public Task<ActionResult<Note>> Update(Note note)
     {
         var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
