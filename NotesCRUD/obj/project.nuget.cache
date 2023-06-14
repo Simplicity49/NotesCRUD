@@ -1,9 +1,15 @@
 {
   "version": 2,
-  "dgSpecHash": "ICnv4SESW3RMFE+sFsivTFXvhGDlHn+nqxoCtH2MkC18OyoKCx4yI5KwNJem65W8a6nNe4gSlzOwtauTn+OnPw==",
+  "dgSpecHash": "MPJBGJ/FU0bjxccg8/7AwJnLaJuBtUnItACVX57/070r4etk6to7xx8RiUWxaHp3apZ5YDCHl8WHBYzevKU6fA==",
   "success": true,
   "projectFilePath": "/Users/mac/Projects/NotesCRUD/NotesCRUD/NotesCRUD.csproj",
   "expectedPackageFiles": [
+    "/Users/mac/.nuget/packages/amazon.lambda.apigatewayevents/2.5.0/amazon.lambda.apigatewayevents.2.5.0.nupkg.sha512",
+    "/Users/mac/.nuget/packages/amazon.lambda.applicationloadbalancerevents/2.1.0/amazon.lambda.applicationloadbalancerevents.2.1.0.nupkg.sha512",
+    "/Users/mac/.nuget/packages/amazon.lambda.aspnetcoreserver/7.3.0/amazon.lambda.aspnetcoreserver.7.3.0.nupkg.sha512",
+    "/Users/mac/.nuget/packages/amazon.lambda.core/2.1.0/amazon.lambda.core.2.1.0.nupkg.sha512",
+    "/Users/mac/.nuget/packages/amazon.lambda.logging.aspnetcore/3.1.0/amazon.lambda.logging.aspnetcore.3.1.0.nupkg.sha512",
+    "/Users/mac/.nuget/packages/amazon.lambda.serialization.systemtextjson/2.3.0/amazon.lambda.serialization.systemtextjson.2.3.0.nupkg.sha512",
     "/Users/mac/.nuget/packages/azure.core/1.24.0/azure.core.1.24.0.nupkg.sha512",
     "/Users/mac/.nuget/packages/azure.identity/1.6.0/azure.identity.1.6.0.nupkg.sha512",
     "/Users/mac/.nuget/packages/bcrypt.net-core/1.6.0/bcrypt.net-core.1.6.0.nupkg.sha512",

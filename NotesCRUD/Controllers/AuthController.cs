@@ -73,7 +73,7 @@ public class AuthController : ControllerBase
                 //new Claim(JwtRegisteredClaimNames.Jti,
                 //Guid.NewGuid().ToString())
              }),
-            Expires = DateTime.UtcNow.AddMinutes(5),
+            Expires = DateTime.UtcNow.AddMinutes(1),
             Issuer = issuer,
             Audience = audience,
             SigningCredentials = new SigningCredentials (new SymmetricSecurityKey(key), SecurityAlgorithms.HmacSha512Signature)

@@ -19,11 +19,13 @@ public class NotesController : ControllerBase
 {
     private readonly NotesCRUDDbContext _context;
     private readonly INoteRepo _noteRepo;
+    //private string _userId;
 
     public NotesController(NotesCRUDDbContext context, INoteRepo noteRepo)
     {
         _context = context;
         _noteRepo = noteRepo;
+        //_userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
     }
 
 

@@ -140,7 +140,7 @@ app.UseSwaggerUI(options =>
 //    //                             "script-src 'self'; object-src 'none'; base-uri 'self'; frame-src 'none'");
 //    await next();
 //});
-
+app.UseCors(x => x.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader());
 
 
 //builder.Services.AddAuthorization();
