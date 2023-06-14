@@ -23,26 +23,30 @@ public class AuthController : ControllerBase
     private readonly IConfiguration _configuration;
     private readonly NotesCRUDDbContext _context;
     private readonly IAuthRepo _authRepo;
+    private readonly UserManager<AppUser> _userManager;
+    private readonly SignInManager<AppUser> _signInManager;
 
-    public AuthController(IConfiguration configuration, NotesCRUDDbContext context, IAuthRepo authRepo)
+    public AuthController(IConfiguration configuration, NotesCRUDDbContext context, IAuthRepo authRepo, UserManager<AppUser> userManager, SignInManager<AppUser> signInManager)
     {
         _configuration = configuration;
         _context = context;
         _authRepo = authRepo;
+        _signInManager = signInManager;
+        _userManager = userManager;
     }
 
     [HttpPost("register")]
-    public IActionResult Register([FromBody] Register request)
+    public async Task<IActionResult> Register([FromBody] Register request)
     {
-        var user = _authRepo.Create(request);
-        return Ok("user created successfully");
+            var user = await _authRepo.CreateAsync(request);
+            return Ok("user created successfully");
     }
 
     [HttpPost("login")]
-    public IActionResult Login([FromBody] Login request)
+    public async Task<IActionResult> Login([FromBody] Login request)
     {
-        var user = _authRepo.Authenticate(request.username, request.password);
-        if (user != "invalid user")
+        var user = await _authRepo.Authenticate(request.username, request.password);
+        if (user != null)
         {
             GenerateJwtToken(user);
             return Ok("login successful");

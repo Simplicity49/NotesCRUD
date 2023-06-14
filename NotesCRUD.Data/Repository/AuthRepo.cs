@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using NotesCRUD.Data.DbContexts;
 using NotesCRUD.Data.Models;
@@ -10,35 +11,40 @@ namespace NotesCRUD.Data.Repository
     public class AuthRepo : IAuthRepo
     {
         private readonly NotesCRUDDbContext _context;
+        private readonly UserManager<AppUser> _userManager;
+        private readonly SignInManager<AppUser> _signInManager;
 
-        public AuthRepo(NotesCRUDDbContext context)
+        public AuthRepo(NotesCRUDDbContext context, SignInManager<AppUser> signInManager, UserManager<AppUser> userManager)
         {
             _context = context;
+            _signInManager = signInManager;
+            _userManager = userManager;
         }
 
-        public string Authenticate(string username, string password)
+        public async Task<string> Authenticate(string username, string password)
         {
-            var user = _context.User.FirstOrDefault(c => c.Username == username);
-            if(user != null)
+            var signIn = await _signInManager.PasswordSignInAsync(username, password, false, false);
+            if (signIn.Succeeded)
             {
-                if (BCrypt.Net.BCrypt.Verify(password, user.PasswordHash))
-                {
-                    return user.Username;
-                }
+                return username;
             }
             return "invalid user";
         }
 
-        public User Create(Register reg)
+        public async Task<AppUser> CreateAsync(Register reg)
         {
-            var user = new User
+            var user = new AppUser
             {
-                Username = reg.username,
-                PasswordHash = BCrypt.Net.BCrypt.HashPassword(reg.password)
+                UserName = reg.username,
+                Email = reg.Email
             };
-            _context.Add(user);
-            _context.SaveChanges();
-            return user;
+            var createUser = await _userManager.CreateAsync(user, reg.password);
+            if (createUser.Succeeded)
+            {
+                return user;
+            }
+            var errors = string.Join(", ", createUser.Errors.Select(e => e.Description));
+            throw new Exception($"Failed to create user: {errors}");
         }
 
     }

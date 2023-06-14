@@ -22,7 +22,7 @@ namespace NotesCRUD.Data.DbContexts
             base.OnModelCreating(builder);
         }
 
-        public DbSet<User> User { get; set; }
+        //public DbSet<User> User { get; set; }
         public DbSet<Note> Note { get; set; }
 
         public override int SaveChanges(bool acceptAllChangesOnSuccess)

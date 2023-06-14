@@ -6,8 +6,8 @@ namespace NotesCRUD.Data.Repository.Interface
 {
 	public interface IAuthRepo
 	{
-            string Authenticate(string username, string password);
-            User Create(Register user);
+            Task<string> Authenticate(string username, string password);
+            Task<AppUser> CreateAsync(Register user);
     }
 }
 

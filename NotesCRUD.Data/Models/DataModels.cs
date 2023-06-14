@@ -13,13 +13,13 @@ namespace NotesCRUD.Data.Models
 		public string UserUpdated { get; set; }
 	}
 
-	public class User : BaseEntity
-	{
-		[Key]
-		public int UserId { get; set; }
-		public string Username { get; set; }
-        public string PasswordHash { get; set; }
-    }
+	//public class User : BaseEntity
+	//{
+	//	[Key]
+	//	public int UserId { get; set; }
+	//	public string Username { get; set; }
+	//  public string PasswordHash { get; set; }
+	//}
 
 	public class Note : BaseEntity
     {
@@ -27,8 +27,7 @@ namespace NotesCRUD.Data.Models
         public int NoteId { get; set; }
         public string Title { get; set; }
         public string Notes { get; set; }
-		public int UserId { get; set; }
-        public User User { get; set; }
+		public string UserId { get; set; }
     }
 }
 

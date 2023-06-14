@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using NotesCRUD.Data.DbContexts;
 
@@ -11,9 +12,11 @@ using NotesCRUD.Data.DbContexts;
 namespace NotesCRUD.Data.Migrations
 {
     [DbContext(typeof(NotesCRUDDbContext))]
-    partial class NotesCRUDDbContextModelSnapshot : ModelSnapshot
+    [Migration("20230614155248_InitialCreate1")]
+    partial class InitialCreate1
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -243,15 +246,48 @@ namespace NotesCRUD.Data.Migrations
                     b.Property<string>("UserCreated")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("UserId")
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<int>("UserId")
+                        .HasColumnType("int");
 
                     b.Property<string>("UserUpdated")
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("NoteId");
 
+                    b.HasIndex("UserId");
+
                     b.ToTable("Note");
+                });
+
+            modelBuilder.Entity("NotesCRUD.Data.Models.User", b =>
+                {
+                    b.Property<int>("UserId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("UserId"));
+
+                    b.Property<DateTime>("DateCreated")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime>("DateUpdated")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("PasswordHash")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("UserCreated")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("UserUpdated")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Username")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("UserId");
+
+                    b.ToTable("User");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
@@ -303,6 +339,17 @@ namespace NotesCRUD.Data.Migrations
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+                });
+
+            modelBuilder.Entity("NotesCRUD.Data.Models.Note", b =>
+                {
+                    b.HasOne("NotesCRUD.Data.Models.User", "User")
+                        .WithMany()
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("User");
                 });
 #pragma warning restore 612, 618
         }
