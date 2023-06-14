@@ -1,0 +1,43 @@
+﻿<Properties StartupConfiguration="{958DA0A9-D438-4C0B-BC81-3E6AE030624C}|https">
+  <MonoDevelop.Ide.Workbench ActiveDocument="NotesCRUD.Data/DbContexts/NotesCRUDDBContext.cs">
+    <Files>
+      <File FileName="NotesCRUD/Controllers/AuthController.cs" Line="32" Column="27" />
+      <File FileName="NotesCRUD.Data/Program.cs" Line="4" Column="1" />
+      <File FileName="NotesCRUD/Controllers/NotesController.cs" Line="61" Column="6" />
+      <File FileName="NotesCRUD.Data/DbContexts/NotesCRUDDBContext.cs" Line="36" Column="10" />
+      <File FileName="NotesCRUD.Data/Repository/Interface/INoteRepo.cs" Line="9" Column="47" />
+      <File FileName="NotesCRUD.Data/Models/DataModels.cs" Line="22" Column="1" />
+      <File FileName="NotesCRUD.Data/Repository/NoteRepo.cs" Line="47" Column="10" />
+      <File FileName="NotesCRUD/Program.cs" Line="85" Column="1" />
+      <File FileName="NotesCRUD/appsettings.json" Line="3" Column="19" />
+    </Files>
+    <Pads>
+      <Pad Id="ProjectPad">
+        <State name="__root__">
+          <Node name="NotesCRUD" expanded="True">
+            <Node name="NotesCRUD" expanded="True">
+              <Node name="Controllers" expanded="True" />
+            </Node>
+            <Node name="NotesCRUD.Data" expanded="True">
+              <Node name="DbContexts" expanded="True">
+                <Node name="NotesCRUDDBContext.cs" selected="True" />
+              </Node>
+              <Node name="Models" expanded="True" />
+              <Node name="Repository" expanded="True">
+                <Node name="Interface" expanded="True" />
+              </Node>
+              <Node name="Requests" expanded="True" />
+            </Node>
+          </Node>
+        </State>
+      </Pad>
+    </Pads>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MultiItemStartupConfigurations />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.ItemProperties.NotesCRUD PreferredExecutionTarget="/Applications/Firefox Developer Edition.app" />
+</Properties>
